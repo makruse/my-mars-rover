@@ -3,8 +3,6 @@ import coordinates.Coordinates;
 import directions.Direction;
 import rovers.MarsRover;
 
-import java.io.IOException;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -15,6 +13,11 @@ public class Main {
         Direction direction = Direction.NORTH;
         Coordinates coordinates = new Coordinates(1,2);
         MarsRover firstRover = new MarsRover(coordinates, direction);
+        firstRover.turnRight();
+
+        System.out.println(firstRover.printCurrentLocation());
+
+        firstRover.turnLeft();
 
         System.out.println(firstRover.printCurrentLocation());
     }
