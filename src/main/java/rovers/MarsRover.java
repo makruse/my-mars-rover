@@ -49,6 +49,14 @@ public class MarsRover {
         }
     }
 
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
     public void moveForward() {
         switch (direction) {
             case NORTH:
