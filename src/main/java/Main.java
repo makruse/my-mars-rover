@@ -14,6 +14,7 @@ public class Main {
         Coordinates coordinates = new Coordinates(1,2);
         MarsRover firstRover = new MarsRover(coordinates, direction);
         firstRover.turnRight();
+        firstRover.moveForward();
 
         System.out.println(firstRover.printCurrentLocation());
 

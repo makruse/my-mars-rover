@@ -11,6 +11,5 @@ public class CommandParser {
         Scanner scanner = new Scanner(is).useDelimiter("\\A");
         String input = scanner.hasNext() ? scanner.next() : "";
         scanner.close();
-        System.out.println(input);
     }
 }

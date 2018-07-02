@@ -48,6 +48,25 @@ public class MarsRover {
                 direction = Direction.NORTH;
         }
     }
+
+    public void moveForward() {
+        switch (direction) {
+            case NORTH:
+                coordinates.increaseYByOne();
+                break;
+            case WEST:
+                coordinates.decreaseXByOne();
+                break;
+            case SOUTH:
+                coordinates.decreaseYByOne();
+                break;
+            case EAST:
+                coordinates.increaseXByOne();
+        }
+
+
+    }
+
 }
 
 
