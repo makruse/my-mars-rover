@@ -1,6 +1,6 @@
 package commands;
 
-public class MoveCommand implements ICommand {
+public class MoveCommand implements Command {
     @Override
     public void execute() {
     }
