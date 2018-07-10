@@ -4,49 +4,47 @@ import coordinates.Coordinates;
 import directions.Direction;
 import org.junit.Before;
 import org.junit.Test;
+import plateaus.MarsPlateau;
 import rovers.MarsRover;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class RoverControllerTest {
 
-    private Direction direction;
-    private Coordinates coordinates;
     private MarsRover rover;
-    private Command command;
     private RoverController controller;
 
     @Before
     public void setUp() {
-        direction = Direction.NORTH;
-        coordinates = new Coordinates(1, 2);
-        rover = new MarsRover(coordinates, direction);
+        rover = new MarsRover(new Coordinates(1, 2), Direction.NORTH, MarsPlateau.getPlateau(5,5));
         controller = new RoverController();
     }
 
     @Test
-    public void roverShouldChangeDirectionToTheRight_whenControllerRunsTurnRightCommand() {
-        command = new TurnRightCommand(rover);
-        controller.setCommands(command);
-        controller.runCommands();
+    public void roverShouldChangeDirectionToTheRight_whenControllerReceivesRAsCommandString() {
+        String commandString = "R";
+        List<Command> commandSequence = controller.setCommandSequence(commandString ,rover);
+        controller.runCommands(commandSequence);
 
         assertEquals(Direction.EAST, rover.getDirection());
     }
 
     @Test
-    public void roverShouldChangeDirectionToTheLeft_whenControllerRunsTurnLeftCommand() {
-        command = new TurnLeftCommand(rover);
-        controller.setCommands(command);
-        controller.runCommands();
+    public void roverShouldChangeDirectionToTheLeft_whenControllerReceivesLAsCommandString() {
+        String commandString = "L";
+        List<Command> commandSequence = controller.setCommandSequence(commandString ,rover);
+        controller.runCommands(commandSequence);
 
         assertEquals(Direction.WEST, rover.getDirection());
     }
 
     @Test
-    public void roverShouldMoveOneStepForward_whenControllerRunsMoveCommand() {
-        command = new MoveCommand(rover);
-        controller.setCommands(command);
-        controller.runCommands();
+    public void overShouldMoveOneStepForward_whenControllerReceivesMAsCommandString() {
+        String commandString = "M";
+        List<Command> commandSequence = controller.setCommandSequence(commandString ,rover);
+        controller.runCommands(commandSequence);
 
         assertEquals(3, rover.getCoordinates().getY());
     }
