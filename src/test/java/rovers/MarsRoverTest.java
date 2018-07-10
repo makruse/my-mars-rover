@@ -4,20 +4,17 @@ import coordinates.Coordinates;
 import directions.Direction;
 import org.junit.Before;
 import org.junit.Test;
+import plateaus.MarsPlateau;
 
 import static org.junit.Assert.*;
 
 public class MarsRoverTest {
 
-    private Direction direction;
-    private Coordinates coordinates;
     private MarsRover rover;
 
     @Before
     public void setUp() {
-        coordinates = new Coordinates(1,2);
-        direction = Direction.NORTH;
-        rover = new MarsRover(coordinates, direction);
+        rover = new MarsRover(new Coordinates(1,2), Direction.NORTH, MarsPlateau.getPlateau(5,5));
     }
 
     @Test
@@ -45,7 +42,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void shouldIncreaseXCoordinateByOneStep_WhenRoverMovesOneStepForward() {
+    public void shouldIncreaseXCoordinateByOneStep_WhenDirectionOfRoverIsNorth() {
         rover.moveForward();
         assertEquals(1, rover.getCoordinates().getX());
         assertEquals(3, rover.getCoordinates().getY());

@@ -2,19 +2,18 @@ package rovers;
 
 import coordinates.Coordinates;
 import directions.Direction;
+import plateaus.MarsPlateau;
 
 public class MarsRover {
 
     private Coordinates coordinates;
     private Direction direction;
+    private MarsPlateau plateau;
 
-    public MarsRover(Coordinates coordinates, Direction direction) {
+    public MarsRover(Coordinates coordinates, Direction direction, MarsPlateau plateau) {
         this.coordinates = coordinates;
         this.direction = direction;
-    }
-
-    public String printCurrentLocation() {
-        return coordinates.getX() + " " + coordinates.getY() + " " + direction.toString();
+        this.plateau = plateau;
     }
 
     public void turnRight() {
@@ -71,10 +70,11 @@ public class MarsRover {
             case EAST:
                 coordinates.increaseXByOne();
         }
-
-
     }
 
+    public String printCurrentLocation() {
+        return coordinates.getX() + " " + coordinates.getY() + " " + direction.toString();
+    }
 }
 
 
